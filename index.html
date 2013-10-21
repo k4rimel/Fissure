@@ -8,55 +8,111 @@
         <!-- CSS -->
         <link rel="stylesheet" type="text/css" href="src/view/css/general.css">
         <link rel="stylesheet" type="text/css" href="src/view/css/foundation.min.css">
+        <link rel="stylesheet" href="font-awesome/css/font-awesome.min.css">
 
         <!-- JS LIBS -->
-		
+		<script type="text/javascript" src="libs/jquery-1.10.2.min.js"></script>
         <!-- CONTROLLERS -->
        	
 
-        <script type="text/javascript">
-            $(document).ready(function()
-            {
-                //CoreController.start(myBundle);
-            });
-        </script>
+        
     </head>
     <body>
         <div class="app row">
             <div class="row header">
-            	<div class="title columns">
-            		<h1>My Spending Recap - 10th october 2013</h1>
+            	<div class="title columns titleContainer">
+            		<h1></h1>
             	</div>
             </div>
-            <div class="row content">
-                <div class="row">
-                    <div class="large-10 button columns">
+            <div class="row content collapse">
+                <!-- <div class="row">
+                    <div class="large-12 button columns">
                         AMAZON - 29.5 USD - 10:05 AM
                     </div>
-                    <div class="large-2 button columns">
-                        Details
-                    </div>
                 </div> 
                 <div class="row">
-                    <div class="large-10 button columns">
+                    <div class="large-12 button columns">
                        WALMART - 22.9 USD - 1:25 PM
                     </div>
-                    <div class="large-2 button columns">
-                        Details
-                    </div>
                 </div> 
                 <div class="row">
-                    <div class="large-10 button columns">
+                    <div class="large-12 button columns">
                         FIVE GUYS BURGERS & FRIES - 15 USD - 6:00 PM
                     </div>
-                    <div class="large-2 button columns">
-                        Details
+                </div>  -->
+                <div class="row collapse order">
+                    <div class="large-9 small-9 columns">
+                        <span class="prefix">My Order</span>
                     </div>
-                </div> 
+                    <div class="large-3 small-3 columns">
+                      <div class="postfix button btnDelete"><i class="icon-remove"></i></div>
+                    </div>
+                </div>
             </div>
             <div class="row footer">
-            	<div class="large button expand secondary">New Order</div>
+            	<div class="formContainer row">   
+                </div>
+                <div class="large button expand btnNewOrder"><i class="icon-plus"></i></div>
             </div>
         </div>
+        <script type="text/javascript">
+        //order.js
+            var Order = (function () {
+                function Order(name) {
+                    this.name = name;
+                }
+                Order.prototype.getProp = function (prop) {
+                    switch (prop) {
+                        case 'name':
+                            return this.name;
+                            break;
+                    }
+                };
+                return Order;
+            })();
+
+            $(document).ready(function()
+            {
+                function getDate(){
+                    var d = new Date();
+
+                    var month = d.getMonth()+1;
+                    var day = d.getDate();
+
+                    var output = d.getFullYear() + '/' +
+                        ((''+month).length<2 ? '0' : '') + month + '/' +
+                        ((''+day).length<2 ? '0' : '') + day;
+                    return output;
+                }
+                var dateNow = getDate();
+                
+                $(".titleContainer").find("h1").html(dateNow+" Spending Recap");
+
+                $(".btnDelete").click(function(){
+                    console.log('del attempt');
+                    var orderLine = this.parentNode.parentNode;
+                    orderLine.remove();
+                    
+                    console.log('del done');
+                });
+
+                $(".btnNewOrder").click(function(){
+                    if($(".btnNewOrder").html() == "Add"){
+                        var oneOrder = new Order($("#right-label").val());
+                        $(".content").append('<div class="row collapse"><div class="large-9 small-9 columns"><span class="prefix">'+oneOrder.getProp('name')+'</span></div><div class="large-3 small-3 columns"><div class="button postfix btnDelete"><i class="icon-remove"></i></div></div></div>'); 
+
+                    console.log($.now());
+                    }
+                    else {
+                        var form = "<form><div class='large-12 columns'><input type='text' id='right-label' placeholder='Price'></div></form>";
+                        $(".formContainer").empty().append(form);
+                        $(".btnNewOrder").text("Add");
+                    }
+                    
+                });
+                
+                //CoreController.start(myBundle);
+            });
+        </script>
     </body>
 </html>

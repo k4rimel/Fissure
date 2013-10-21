@@ -1,4 +1,38 @@
-div.content
+@font-face{
+    font-family : "Roboto-Thin";
+    src : url('font/Roboto-Thin.ttf');
+}
+
+.app{
+	font-family : "Roboto-Thin";
+}
+
+.content
 {
+	
 	height: 22em;
 }
+.icon-remove
+{
+	font-size: 22px;
+}
+.icon-plus{
+	font-size: 40px;
+}
+/*.header{
+	background-color:#38DF64; 
+	margin-bottom: 3em;
+}
+div.btnNewOrder{
+	background-color:#38B2CE;
+}
+.app{
+	background-color:#FF9F40;
+}
+.btnDelete{
+	background-color:#FF5640;
+	border-color: #FF8373;
+}
+.order{
+	margin-top: 3em;
+}*/
