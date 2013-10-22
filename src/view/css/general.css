@@ -2,7 +2,22 @@
     font-family : "Roboto-Thin";
     src : url('font/Roboto-Thin.ttf');
 }
+body.body{
+	background-color: #E67578;	
+}
+.titleContainer
+{
+	text-align: center;
+	font-size: 55px;
+	color:#FFFFFF;
+	font-weight: bold;
 
+}
+div.header
+{
+	padding-top: 0.7em;
+	height: 10em;
+}
 .app{
 	font-family : "Roboto-Thin";
 }
@@ -12,13 +27,56 @@
 	
 	height: 22em;
 }
-.icon-remove
+.icon-trash
 {
-	font-size: 22px;
+	font-size: 18px;
 }
 .icon-plus{
 	font-size: 40px;
 }
+.icon-arrow-down{
+	font-size: 15px;
+}
+.btn{
+	padding-bottom: 1.03125em;
+	padding-top: 1.03125em;
+	padding-left: 0;
+	padding-right: 0;
+	width: 100%;
+	font-size: 1.25em;
+	display: inline-block;
+	padding-bottom: 0.75em;
+	padding-top: 0.8125em;
+	background-color: #DD6164;
+	border-color: #B63C3F;
+	border-style: solid;
+	border-width: 1px;
+	color: #FFFFFF;
+	cursor: pointer;
+	font-family: inherit;
+	font-weight: bold;
+	line-height: normal;
+	margin: 0 0 1.25em;
+	position: relative;
+	text-align: center;
+	text-decoration: none;
+	direction: ltr;
+	-moz-isolate;
+	font-style: normal;
+}
+.btn:hover{
+	background-color:#E68285;
+}
+.icon-user{
+	color:#FFFFFF;
+	font-size: 27px;
+}
+.icon-lock{
+	color:#FFFFFF;
+	font-size: 29px;
+}
+
+
 /*.header{
 	background-color:#38DF64; 
 	margin-bottom: 3em;

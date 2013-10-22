@@ -17,11 +17,11 @@
 
         
     </head>
-    <body>
+    <body class="body">
         <div class="app row">
             <div class="row header">
             	<div class="title columns titleContainer">
-            		<h1></h1>
+            		
             	</div>
             </div>
             <div class="row content collapse">
@@ -44,27 +44,37 @@
                     <div class="large-9 small-9 columns">
                         <span class="prefix">My Order</span>
                     </div>
-                    <div class="large-3 small-3 columns">
-                      <div class="postfix button btnDelete"><i class="icon-remove"></i></div>
+                    <div class="large-1 small-1 columns">
+                      <div class="postfix  btnEdit btn"><i class="icon-arrow-down"></i></div>
                     </div>
+                    <div class="large-1 small-1 columns">
+                      <div class="postfix  btnEdit btn"><i class="icon-wrench"></i></div>
+                    </div> 
+                    <div class="large-1 small-1 columns">
+                      <div class="postfix  btnDelete btn"><i class="icon-trash"></i></div>
+                    </div>                   
                 </div>
             </div>
             <div class="row footer">
             	<div class="formContainer row">   
                 </div>
-                <div class="large button expand btnNewOrder"><i class="icon-plus"></i></div>
+                <div class="large expand btnNewOrder btn"><i class="icon-plus"></i></div>
             </div>
         </div>
         <script type="text/javascript">
         //order.js
             var Order = (function () {
-                function Order(name) {
+                function Order(name, price = null) {
                     this.name = name;
+                    this.price = price;
                 }
                 Order.prototype.getProp = function (prop) {
                     switch (prop) {
                         case 'name':
                             return this.name;
+                            break;
+                        case 'price':
+                            return this.price;
                             break;
                     }
                 };
@@ -73,20 +83,28 @@
 
             $(document).ready(function()
             {
+                $("#inputForm").click(function (event) {
+                  event.stopPropagation();
+                });
+               
+
                 function getDate(){
                     var d = new Date();
 
                     var month = d.getMonth()+1;
                     var day = d.getDate();
 
-                    var output = d.getFullYear() + '/' +
+                   /* var output = d.getFullYear() + '/' +
                         ((''+month).length<2 ? '0' : '') + month + '/' +
-                        ((''+day).length<2 ? '0' : '') + day;
+                        ((''+day).length<2 ? '0' : '') + day;*/
+
+                    var output = ((''+day).length<2 ? '0' : '') + day + '/' +
+                        ((''+month).length<2 ? '0' : '') + month + '/' + d.getFullYear();
                     return output;
                 }
                 var dateNow = getDate();
                 
-                $(".titleContainer").find("h1").html(dateNow+" Spending Recap");
+                $(".titleContainer").html(dateNow+" - Spending Recap");
 
                 $(".btnDelete").click(function(){
                     console.log('del attempt');
@@ -99,12 +117,14 @@
                 $(".btnNewOrder").click(function(){
                     if($(".btnNewOrder").html() == "Add"){
                         var oneOrder = new Order($("#right-label").val());
-                        $(".content").append('<div class="row collapse"><div class="large-9 small-9 columns"><span class="prefix">'+oneOrder.getProp('name')+'</span></div><div class="large-3 small-3 columns"><div class="button postfix btnDelete"><i class="icon-remove"></i></div></div></div>'); 
+                        $(".content").append('<div class="row collapse"><div class="large-8 small-8 columns"><span class="prefix">'+oneOrder.getProp('name')+'</span></div><div class="large-2 small-2 columns"><div class="button postfix btnDelete"><i class="icon-trash"></i></div></div><div class="large-2 small-2 columns"><div class="postfix button btnEdit"><i class="icon-wrench"></i></div></div></div>'); 
+                         $("html").click(function() {
+                            $("#inputForm").hide();
+                        });
 
-                    console.log($.now());
                     }
                     else {
-                        var form = "<form><div class='large-12 columns'><input type='text' id='right-label' placeholder='Price'></div></form>";
+                        var form = "<form id='inputForm'><div class='large-12 columns'><input type='text' id='right-label' placeholder='Price'></div></form>";
                         $(".formContainer").empty().append(form);
                         $(".btnNewOrder").text("Add");
                     }
