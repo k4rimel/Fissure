@@ -67,6 +67,10 @@ div.header
 .btn:hover{
 	background-color:#E68285;
 }
+.btnAdd
+{
+	background-color: #4AC2C2;
+}
 .icon-user{
 	color:#FFFFFF;
 	font-size: 27px;
