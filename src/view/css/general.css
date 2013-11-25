@@ -3,7 +3,7 @@
     src : url('font/Roboto-Thin.ttf');
 }
 body.body{
-	background-color: #E67578;	
+	background-color: #34AAD1;	
 }
 .titleContainer
 {
@@ -16,6 +16,7 @@ body.body{
 div.header
 {
 	padding-top: 0.7em;
+	padding-bottom: 0.2em;
 	height: 10em;
 }
 .app{
@@ -25,25 +26,26 @@ div.header
 .content
 {
 	
-	height: 22em;
+	height: 17em;
 }
 .icon-trash
 {
 	font-size: 18px;
 }
 .icon-plus{
-	font-size: 29px;
+	font-size: 25px;
+    display: block;
+    margin-top: 15px;
 }
 .icon-arrow-down{
 	font-size: 15px;
 }
-.btn{
+/*.button{
 	padding-bottom: 1.03125em;
 	padding-top: 1.03125em;
 	padding-left: 0;
 	padding-right: 0;
 	width: 100%;
-	font-size: 1.25em;
 	display: inline-block;
 	padding-bottom: 0.75em;
 	padding-top: 0.8125em;
@@ -64,9 +66,9 @@ div.header
 	-moz-isolate;
 	font-style: normal;
 }
-.btn:hover{
+.button:hover{
 	background-color:#E68285;
-}
+}*/
 .btnAdd
 {
 	background-color: #4AC2C2;

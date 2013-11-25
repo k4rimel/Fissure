@@ -6,7 +6,6 @@ var InputController = (function () {
         switch (prop) {
             case 'items':
                 return this.items;
-                break;
         }
     };
     return InputController;
